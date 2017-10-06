@@ -37,21 +37,21 @@
           </div>
           <div class="panel" ng-show=panel.isSelected(3)>
             <h4>Reviews</h4>
-            <blockquote ng-repeat="review in product.reviews">
-              <b>Stars: {{review.stars}}</b>
-              <p>{{review.body}}</p>
+            <blockquote ng-repeat="review in product.reviews" class="card" style="width: 20rem;">
+              <b class="card-title">Stars: {{review.stars}}</b>
+              <p class="card-text">{{review.body}}</p>
               <cite>by: {{review.author}}</cite>
             </blockquote>
-            <form>
-              <blockquote>
-                <b>Stars: {{review.stars}}</b>
-                <p>Your review: {{review.body}}</p>
-                <cite>by: {{review.author}}</cite>
+            <form ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+              <blockquote class="card" style="width: 20rem;">
+                <b>Stars: {{reviewCtrl.review.stars}}</b>
+                <p>Your review: {{reviewCtrl.review.body}}</p>
+                <cite>by: {{reviewCtrl.review.author}}</cite>
               </blockquote>
               <legend>Write a Review</legend>
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Stars:</label>
-                  <select class="form-control" id="exampleFormControlSelect1" ng-model="review.stars">
+                  <select class="form-control" id="exampleFormControlSelect1" ng-model="reviewCtrl.review.stars">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -61,11 +61,11 @@
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlTextarea1">Your Review:</label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a short review about the product" ng-model="review.body"></textarea>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write a short review about the product" ng-model="reviewCtrl.review.body"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">by:</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="review.author">
+                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" ng-model="reviewCtrl.review.author">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
