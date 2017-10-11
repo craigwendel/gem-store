@@ -20,10 +20,18 @@
     this.review = {}
 
     this.addReview = function (product) {
+      this.review.createdOn = Date.now()
       product.reviews.push(this.review)
       this.review = {}
     }
   })
+
+  // app.directive('productTitle', function () {
+  //   return {
+  //     restrict: 'E',
+  //     templateUrl: 'templates/product-title.html'
+  //   }
+  // })
 
   var gems = [
     {
